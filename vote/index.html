@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+		body {
+			margin: 0;
+		}
+
+		.nav-container {
+
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			background-color: rgb(243, 243, 243);
+		}
+		
+		
+		.nav-item {
+			width: 100px;
+			padding: 25px 15px;
+			cursor: pointer;
+			text-align: center;
+			list-style-type: none;
+			
+		}
+		
+		.nav-item a {
+			text-decoration: none;
+			color: rgb(85, 129, 185);
+			font-weight: bold;
+		}
+		
+		.nav-item:hover{
+			background-color: rgb(196, 196, 196);
+
+		}
+
+		
+		.nav-item:nth-child(1){
+			width: 150px;
+			padding: 20px 20px;
+			background-color: rgb(202, 202, 202);
+			font-size: 25px;
+			font-weight: bold;
+			margin-right:auto;
+		}
+		.nav-item:nth-child(1) a {
+			color: rgb(230, 250, 255);
+		}
+        
+        
+    </style>
+</head>
+<body>
+    <div id="nav-box">
+        <nav class="gnb">
+            <ul class="nav-container">
+				<li class="nav-item"><a href="index.html">투표 페이지</a></li>
+                <li class="nav-item"><a href="./memberMain.jsp">후보등록</a></li>
+                <li class="nav-item"><a href="./voteMain.jsp">투표</a></li>
+                <li class="nav-item"><a href="">개표결과</a></li>
+            </ul>
+        </nav>
+
+        
+    </div>
+    <section name="sec">
+        안녕하세요
+    </section>
+</body>
+</html>

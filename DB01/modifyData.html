@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DB Page</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			border: 1px solid black;
+			text-align: center;
+			width: 350px;
+		}
+		
+		.title {
+			padding: 5px 10px;
+		}
+		
+		.inputbox {
+			border: 1px solid;
+			width: 200px;
+			height: 15px;
+			
+		}
+		
+		#box {
+			display: inline-block;
+			text-align: center;
+		}
+		
+		#submit {
+			margin-bottom: 10px;
+			margin-left: 10px;
+		}
+		
+		#modify,
+		#delete {
+			margin-top: 10px;
+		}
+		
+		#delete {
+			margin-left: 30px;
+		}
+	</style>
+</head>
+<body>
+    
+    <div id="box">
+        <h3> 성적 조회 / 수정 </h3>
+		<form action="showModify.jsp" method="post">
+			<span>조회할 학번</span>
+			<input type="number" name="stuID" max="99999999">
+			<input type="submit" value="조회" id="submit">
+		</form>	
+
+		<table border="1px solid black">
+			<tr>
+				<th class="title">이름</th>
+				<td>
+					<input type="text" name="name" class="inputbox" maxlength="12">
+				</td>
+			</tr>
+			<tr>
+				<th class="title">학번</th>
+				<td>
+				<input type="number" name="id" class="inputbox" readonly>
+				</td>
+			</tr>
+			<tr>
+				<th class="title">국어</th>
+				<td>
+					<input type="number" name="kor" class="inputbox" max="100" min="0">
+				</td>
+			</tr>
+			<tr>
+				<th class="title">영어</th>
+				<td>
+					<input type="number" name="eng" class="inputbox" max="100" min="0">
+				</td>
+			</tr>
+			<tr>
+				<th class="title">수학</th>
+				<td>
+					<input type="number" name="mat" class="inputbox" max="100" min="0">
+				</td>
+			</tr>
+		</table>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('.click').click(function(){
+                alert('잘못된 접근 입니다.');
+            })
+
+        })
+    </script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #shop {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 80;
+            padding: 17px;
+            background-color: rgb(243, 243, 243);
+        }
+
+        #shoplink {
+            text-decoration: none;
+            color: rgb(8, 106, 235);
+        }
+
+        #shoplink:hover,
+        .click:hover {
+            text-decoration: underline;
+        }
+
+        #ipadbox {
+            padding-top: 20px;
+            background-color: black;
+            text-align: center;
+        }
+
+        #ipad {
+            color: white;
+            position: relative;
+            display:block;
+            line-height: 40px;
+        }
+
+        .click {
+            text-decoration: none;
+            color: rgb(30, 119, 235);
+            font-weight: bolder;
+        }
+        
+        #ipadImg {
+            width: 100%;
+        }
+
+        #iphonebox {
+            padding-top: 40px;
+            background-color: rgb(243, 243, 243);
+            text-align: center;
+        }
+
+        #iphone {
+            color: rgb(0, 0, 0);
+            position: relative;
+            display:block;
+            line-height: 40px;
+            margin-bottom: 60px;
+        }
+
+        #iphoneImg {
+            width: 70%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="shop">
+        <a href="" id="shoplink">온라인으로 쇼핑</a>
+        하고 무료 배송, 스페셜리스트 지원 등의 혜택을 받으세요. 
+    </div>
+    <div id="ipadbox">
+        <div id="ipad">
+            <h1 style="font-size: 60px; margin-bottom: 5px;">iPad Pro</h1><br>
+            <span style="font-size: 23px; font-weight: bold; margin: 10px;">막강한 성능의 Apple M1칩 탑재.</span><br>
+            <a href="" id="ipadclick" class="click">더 알아보기 ></a>
+            <span> &nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <a href="" id="ipadclick" class="click">구입하기 ></a>
+        </div>
+        <img src="./iPad.jpg" id="ipadImg" alt="">
+    </div>
+
+    <div id="iphonebox">
+        <div id="iphone">
+            <h1 style="font-size: 50px; margin-bottom: 5px;">iPhone 12</h1><br>
+            <span style="font-size: 23px;  margin: 0px;">스피드 그 이상의 스피드.</span><br>
+            <span style="font-size: 17px;  margin: 0px; color: rgb(143, 143, 143);">\950,000부터(보상 판매* 미적용 가격)</span><br>
+            <a href="" id="iphoneclick" class="click">더 알아보기 ></a>
+            <span> &nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <a href="" id="iphoneclick" class="click">구입하기 ></a>
+        </div>
+        <img src="./iphone.png" id="iphoneImg" alt="">
+    </div>
+</body>
+</html>

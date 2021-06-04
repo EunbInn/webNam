@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8">
+        <title>Document</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                border: 1px solid black;
+                width: 700px;
+            }
+    
+            #title {
+                text-align: center;
+                background-color: rgb(219, 219, 219);
+                font-weight: bolder;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <div>
+            <div>
+                <h3 style="text-align: left;">* 창 만들기 태그</h3>
+            </div>
+            <table border="1">
+                <tr id="title">
+                    <td>형식</td>
+                    <td style="width: 150px;">구성</td>
+                    <td>내용</td>
+                </tr>
+                    <td rowspan="7">&lt;FRAME&gt;</td>
+                    <td>&lt;FRAMESET&gt;...&lt;/FRAMESET&gt;</td>
+                    <td>
+                        창의 기본 틀을 지정합니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>&lt;FRAMESET ROW= "숫자 혹은 %"&gt;</td>
+                    <td>
+                        위 아래로 나눠줍니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>&lt;FRAMESET COLS= "숫자 혹은 %"&gt;</td>
+                    <td>
+                        좌우로 나눠줍니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>&lt;FRAME SRC="..." MARGINWIDTH="..."&gt;</td>
+                    <td>
+                        창에 들어갈 좌우 여백을 정의합니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>&lt;FRAME SRC="..." MARGINHEIGHT="..."&gt;</td>
+                    <td>
+                        창에 들어갈 상하 여백을 정의합니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>&lt;FRAME SCROLLING= "..."&gt;</td>
+                    <td>
+                        스크롤바를 설정해 줍니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>&lt;NOFRAMES&gt;...&lt;/NOFRAMES&gt;</td>
+                    <td>
+                        프레임이 안보이게 해줍니다.
+                    </td>
+                </tr>
+                
+            </table>
+        </div>
+    </body>
+    </html>

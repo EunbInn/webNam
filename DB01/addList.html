@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DB Page</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	<style>
+		table {
+			border-collapse: collapse;
+			border: 1px solid black;
+			text-align: center;
+			width: 350px;
+		}
+		
+		.title {
+			padding: 5px 10px;
+		}
+		
+		.inputbox {
+			border: 1px solid;
+			width: 200px;
+			height: 15px;
+			
+		}
+		
+		#box {
+			display: inline-block;
+			text-align: center;
+		}
+		
+		#submit {
+			margin-bottom: 10px;
+			margin-left: 305px;
+		}
+	</style>
+</head>
+<body>
+    
+    <div id="box">
+        <h3> 성적 입력 하기 </h3>
+		<form action="showInsert.jsp" method="post">
+			<input type="submit" value="추가" id="submit">
+			<table border="1px solid black">
+				<tr>
+					<th class="title">이름</th>
+					<td>
+						<input type="text" name="name" id="name" class="inputbox" maxlength="15">
+					</td>
+				</tr>
+				<tr>
+					<th class="title">학번</th>
+					<td>자동 부여</td>
+				</tr>
+				<tr>
+					<th class="title">국어</th>
+					<td>
+						<input type="number" name="kor" id="kor" class="inputbox" placeholder="0~100" max="100" min="0">
+					</td>
+				</tr>
+				<tr>
+					<th class="title">영어</th>
+					<td>
+						<input type="number" name="eng" id="eng" class="inputbox" placeholder="0~100" max="100" min="0">
+					</td>
+				</tr>
+				<tr>
+					<th class="title">수학</th>
+					<td>
+						<input type="number" name="mat" id="mat" class="inputbox" placeholder="0~100" max="100" min="0">
+					</td>
+				</tr>
+			</table>
+        </form>
+    </div>
+		<script>
+		function getFilter(name) {
+				var filter = /^[가-힣\s]+$/;
+				var filter2 = /^[a-zA-Z]+$/;
+				if (filter.test(name) || filter2.test(name)) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		$(function() {
+			$('#submit').click(function() {
+				var name = $('#name').val();
+				var kor = $('#kor').val();
+				var eng = $('#eng').val();
+				var mat = $('#mat').val();
+		
+				if (!getFilter(name) || name.length > 15 || name == "") {
+					alert('이름 형식이 잘못되었습니다.');
+					return false;
+				} 
+
+				if (kor == "") {
+					alert('국어 성적란을 확인해주세요');
+					return false;
+				}
+				
+				if (eng == "") {
+					alert('영어 성적란을 확인해주세요');
+					return false;
+				}
+				
+				if (mat == "") {
+					alert('수학 성적란을 확인해주세요');
+					return false;
+				}
+				
+				if (getFilter(name) && name != "" &&name.length < 16 &&
+					kor != "" && eng != "" && mat != ""){
+					return true;
+
+				}
+			});
+		
+		})
+			
+		
+	</script>
+</body>
+</html>
