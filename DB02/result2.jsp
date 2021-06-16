@@ -4,42 +4,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<title>투표 - 개표 확인</title>
+	<link rel="stylesheet" type="text/css" href="navigation.css">
+	<style>
+		#name {
+			width: 140px;
+			background-color: #faf1e6;
+			padding: 5px 2px 5px 15px;
+			color: #064420;
+			text-align: left;
+		}
 
-<title>투표 - 개표 확인</title>
-<link rel="stylesheet" type="text/css" href="navigation.css">
-<style>
-	
-	#name {
-		width: 140px;
-		background-color: #faf1e6;
-		padding: 5px 2px 5px 15px;
-		color: #064420;
-		text-align: left;
-	}
+		img {
+			margin-top: 4px;
+		}
 
-	img {
-		margin-top: 4px;
-	}
+		#back {
+			margin-top: 10px;
+			width: 95px;
+			height: 35px;
+			padding: 5px 15px;
+			border: 2px solid #064420;
+			border-radius: 7px;
+			background-color: #064420;
+			color: #fdfaf6;
+			font-weight: bold;
+			cursor: pointer;
+		}
 
-	#back {
-		margin-top: 10px;
-		width: 95px;
-		height: 35px;
-		padding: 5px 15px;
-		border: 2px solid #064420;
-		border-radius: 7px;
-		background-color: #064420;
-		color: #fdfaf6;
-		font-weight: bold;
-		cursor: pointer;
-	}
-
-	#back:hover {
-		background-color: #e4efe7;
-		color: #064420;
-	}
-</style>
+		#back:hover {
+			background-color: #e4efe7;
+			color: #064420;
+		}
+	</style>
 </head>
 <% // 전역변수 선언
 	String kNum = ""; //기호
@@ -62,19 +60,19 @@
 		</div>
 		<section>
 
-	<%
-	kNum = request.getParameter("kNum");
-	name = request.getParameter("name");
-	String id = "root";
-	String pw = "0112";
+		<%
+		kNum = request.getParameter("kNum");
+		name = request.getParameter("name");
+		String id = "root";
+		String pw = "0112";
 
-	try {	
-		Class.forName("com.mysql.cj.jdbc.Driver"); 
-		Connection con = DriverManager.getConnection("jdbc:mysql://192.168.23.34:3306/kopoctc", id, pw);
-		Statement stmt = con.createStatement(); //statement 선언
-		ResultSet rs = null;
-		String queryT;
-	%>
+		try {	
+			Class.forName("com.mysql.cj.jdbc.Driver"); 
+			Connection con = DriverManager.getConnection("jdbc:mysql://192.168.23.34:3306/kopoctc", id, pw);
+			Statement stmt = con.createStatement(); //statement 선언
+			ResultSet rs = null;
+			String queryT;
+		%>
 
 			<h1 id="header"><%=name%>
 				후보 득표 현황
@@ -85,13 +83,13 @@
 					<table>
 			<%
 			for (int i = 0; i < age.length; i++) {
-				out.println("<tr>"
-						+ "<th id='name'>" + age[i] +" 대</th>");
+				out.println("<tr>" + 
+								"<th id='name'>" + age[i] +" 대</th>");
 				queryT = "select count(age) as vCnt ,(count(age)/(select count(*) from votetable where kNum = " + kNum + "))*100"
 						+ " from votetable where kNum = " + kNum + " and age = " + age[i] + " group by age;";
 				rs = stmt.executeQuery(queryT);
 				String getEmpty = "";
-				while(rs.next()) {
+				while (rs.next()) {
 					vCnt = rs.getInt(1);
 					vPer = rs.getDouble(2);
 					getEmpty = rs.getString(1);
@@ -102,12 +100,12 @@
 				}
 				
 				if (getEmpty.equals("")) {
-						vCnt = 0;
-						vPer = 0;
-						out.println("<td>" 
-							+ "<img src='./line.PNG' style='width:0px; height:80%' alt=''>&nbsp"
-							+ vCnt + " (" + String.format("%.1f",vPer) + "%)" + "</td>"
-							+ "</tr>");
+					vCnt = 0;
+					vPer = 0;
+					out.println("<td>" 
+						+ "<img src='./line.PNG' style='width:0px; height:80%' alt=''>&nbsp"
+						+ vCnt + " (" + String.format("%.1f",vPer) + "%)" + "</td>"
+						+ "</tr>");
 				}
 			}				
 				rs.close();
@@ -126,9 +124,7 @@
 			%>
 					</table>
 				</div>
-
 				<button id="back" onclick="history.back()">뒤로 가기</button>
-
 			</div>
 
 		</section>

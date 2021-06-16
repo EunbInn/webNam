@@ -5,9 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 <title>투표 - 후보 등록 확인</title>
 <link rel="stylesheet" type="text/css" href="navigation.css">
 <style>
@@ -19,6 +16,7 @@
 %>
 <body>
 	<div id="box">
+		<!--gnu-->
 		<div id="nav-box">
 			<nav class="gnb">
 				<ul class="nav-container">
@@ -33,14 +31,14 @@
 
 		<%
 		request.setCharacterEncoding("UTF-8");
-		name = request.getParameter("name");
-		kNum = request.getParameter("kNum");
+		name = request.getParameter("name"); //후보명
+		kNum = request.getParameter("kNum"); //기호
 		String id = "root";
 		String pw = "0112";
 		try {	
 			Class.forName("com.mysql.cj.jdbc.Driver"); 
 			Connection con = DriverManager.getConnection("jdbc:mysql://192.168.23.34:3306/kopoctc", id, pw);
-			Statement stmt = con.createStatement(); //stament 선언
+			Statement stmt = con.createStatement(); 
 			ResultSet rs = null;
 			String queryT;
 		%>
@@ -49,8 +47,9 @@
 			<hr>
 			<div id="content-wrap">
 			<%
-			queryT = "select max(kNum) from hubotable;";
+			queryT = "select max(kNum) from hubotable;"; //기호 자동생성을 위해 맥스 넘버를 미리 받아옴
 			rs = stmt.executeQuery(queryT);
+			
 			int max = 0;
 			while (rs.next()) {
 				max = rs.getInt(1);
@@ -61,18 +60,13 @@
 			stmt.execute(queryT);
 			
 			out.println("<div>"+ name +"님의 후보 등록이 완료되었습니다</div>");
-			
-			
+
 			rs.close();
 			stmt.close();
 			con.close();
 		} catch (Exception e) {
 			String err = e.getMessage();
 			out.println(err);
-			if (err.contains("Duplicate")){
-				out.println("<div><b>중복된 입력 입니다</b></div>");
-				return;
-			}
 		} finally {
 			
 		}
@@ -80,41 +74,6 @@
 			</div>
 		</section>
 	</div>
-	<script>
-		function getFilter(name) {
-			var filter = /^[가-힣\s]+$/;
-			var filter2 = /^[a-zA-Z\s]+$/;
-			if (filter.test(name) || filter2.test(name)) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-		$(function() {
-			$('#submit').click(function() {
-				var name = $('#name').val();
-				var kNum = $('#kNum').val();
 
-				if (kNum == "") {
-					alert('기호 입력란을 확인해주세요');
-					return false;
-				}
-				
-				if (!getFilter(name) || name.length > 20 || name == "") {
-					alert('이름 형식이 잘못되었습니다.');
-					return false;
-				} 
-
-				if (getFilter(name) && name != "" &&
-					kNum != ""){
-					return true;
-
-				}
-			});
-		
-		})
-			
-		
-	</script>
 </body>
 </html>

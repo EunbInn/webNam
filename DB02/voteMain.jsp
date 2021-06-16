@@ -51,21 +51,21 @@
 		</div>
 		<section>
     
-	<%
-	String id = "root";
-	String pw = "0112";
-	try {	
-		Class.forName("com.mysql.cj.jdbc.Driver"); 
-		Connection con = DriverManager.getConnection("jdbc:mysql://192.168.23.34:3306/kopoctc", id, pw);
-		Statement stmt = con.createStatement(); //stament 선언
-		ResultSet rs = null;
-		String queryT;
-	%>
+		<%
+		String id = "root";
+		String pw = "0112";
+		try {	
+			Class.forName("com.mysql.cj.jdbc.Driver"); 
+			Connection con = DriverManager.getConnection("jdbc:mysql://192.168.23.34:3306/kopoctc", id, pw);
+			Statement stmt = con.createStatement(); //stament 선언
+			ResultSet rs = null;
+			String queryT;
+		%>
 
 			<h1 id="header">투표하기</h1>
 			<hr>
 			<div id="content-wrap">
-				<form method='post'>
+				<form method="post">
 					<!--셀렉트박스 인자 값 기호&이름 /디폴트타입 빈칸 :none-->
 					<select name="kNumName" id="kNumName" class="selectBox">
 						<option value='none' selected>후보 선택</option> 

@@ -65,8 +65,7 @@
 			<h1 id="header">개표 결과</h1>
 			<hr>
 			<div id="content-wrap">
-				<div id="wrap">
-					<table>
+				<table>
 			<%	
 			ArrayList<Integer> kNumArr = new ArrayList<Integer>(); 
 			ArrayList<String> nameArr = new ArrayList<String>();
@@ -131,8 +130,7 @@
 				
 			}
 			%>
-					</table>
-				</div>
+				</table>
 			</div>
 		</section>
 	</div>

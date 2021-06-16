@@ -1,0 +1,23 @@
+#title {
+		width: 500px;
+	}
+	
+table {
+	width: 900px;
+	border-collapse: collapse;
+	border: 2px solid black;
+}
+
+tr {
+	border-bottom: 2px solid black;
+}
+
+td>a {
+	text-decoration : none;
+	color: black;
+}
+
+td>a:hover {
+	text-decoration: underline;
+	color: red;
+}

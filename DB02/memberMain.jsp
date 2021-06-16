@@ -20,8 +20,9 @@
 		padding: 5px 7px;
 	}
 
+
 	#number {
-		width: 250px;
+		width: 200px;
 	}
 
 	.inputBox {
@@ -115,17 +116,19 @@
 
 			queryT = "select * from hubotable;";
 			rs = stmt.executeQuery(queryT);
+	
 			while (rs.next()) {
+				int kNum = rs.getInt(1);
+				String name = rs.getString(2);
 				out.println("<tr class='line'>" 
 				+ "<th class='title-num'>기호</th>" 
-				+ "<td name='kNum'>" + rs.getInt(1) + "</td>" 
-				+ "<th class='title-name'>후보명</th>" 
-				+ "<td name='name'>" + rs.getString(2) + "</td>" 
+				+ "<td name='kNum'>" + kNum + "</td>" 
+				+ "<th class='title-name'>후보명</th>"
+				+ "<td name='name'>" + name + "</td>" 
 				+ "<td><button class='delete'>"
-				+ "<a href='./member02.jsp?kNum=" + rs.getInt(1) + "&name=" + rs.getString(2) + "'>"
+				+ "<a href='./member02.jsp?kNum=" + kNum + "&name=" + name.trim() + "'>"
 				+ "삭제</a></button></td>" 
-				+ "</tr>");
-				if (rs.getString(2).equals("")) break;					
+				+ "</tr>");		
 			}
 				
 			rs.close();
@@ -134,13 +137,12 @@
 		} catch (Exception e) {
 			String err = e.getMessage();
 			out.println(err);
-			
 		} finally {
 				
 		}
 			%>
 					<tr>
-						<form method='post'>
+						<form method="post">
 							<th class='title-num'>기호</th>
 							<td id="number"><%=newNum%></td>
 							<th class='title-name'>후보명</th>
@@ -164,16 +166,17 @@
 				return false;
 			}
 		}
+		
 		$(function() {
 			$('#submit').click(function() {
 				var name = $('#name').val();
 				
-				if (!getFilter(name) || name.length > 20 || name == "") {
+				if (!getFilter(name) || name.length > 20 || $.trim(name) == "") {
 					alert('이름 형식이 잘못되었습니다.');
 					return false;
 				} 
 
-				if (getFilter(name) && name != "" &&
+				if (getFilter(name) && $.trim(name) != "" &&
 					kNum != ""){
 					return true;
 				}

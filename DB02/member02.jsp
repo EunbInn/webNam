@@ -5,8 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <title>투표 - 후보 삭제 확인</title>
 <link rel="stylesheet" type="text/css" href="navigation.css">
@@ -73,41 +71,6 @@
 			</div>
 		</section>
 	</div>
-	<script>
-		function getFilter(name) {
-			var filter = /^[가-힣\s]+$/;
-			var filter2 = /^[a-zA-Z\s]+$/;
-			if (filter.test(name) || filter2.test(name)) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-		$(function() {
-			$('#submit').click(function() {
-				var name = $('#name').val();
-				var kNum = $('#kNum').val();
 
-				if (kNum == "") {
-					alert('기호 입력란을 확인해주세요');
-					return false;
-				}
-				
-				if (!getFilter(name) || name.length > 20 || name == "") {
-					alert('이름 형식이 잘못되었습니다.');
-					return false;
-				} 
-
-				if (getFilter(name) && name != "" &&
-					kNum != ""){
-					return true;
-
-				}
-			});
-		
-		})
-			
-		
-	</script>
 </body>
 </html>
